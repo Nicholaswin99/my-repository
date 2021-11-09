@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dlogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>&nbsp
+      <th>Author</th>&nbsp
+      <th>Content</th>&nbsp
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dlogs.each do |dlog| %>
+      <tr>
+        <td><%= dlog.title %></td>&nbsp
+        <td><%= dlog.author %></td>&nbsp
+        <td><%= dlog.content %></td>&nbsp
+        <td><%= link_to 'Show', dlog %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dlog', new_dlog_path %>

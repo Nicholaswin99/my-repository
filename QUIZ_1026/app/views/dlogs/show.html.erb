@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @dlog.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @dlog.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @dlog.content %>
+</p>
+
+<%= link_to 'Edit', edit_dlog_path(@dlog) %> |
+<%= link_to 'Back', dlogs_path %>
+
+<h2>Comments</h2>
+<% @dlog.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.commenter %></strong>
+  </p>
+
+  <p>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @dlog, @dlog.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

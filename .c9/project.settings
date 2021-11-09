@@ -8,6 +8,7 @@
         "@aws.samSchemaVersion": "v5.2.11",
         "@git.autofetch": true,
         "@git.path": null,
+        "@json.schemas": [],
         "@yaml.customTags": [
             "!And",
             "!And sequence",
