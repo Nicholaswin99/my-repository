@@ -1,25 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
-<div scope='row'>
-  <%= form_with url: "/users", method: :get do |form| %>
-  <%= form.label :q, "Search" %>
-  <%= form.text_field :q %>
-  <%= form.submit "search" %>
-<% end %> 
-<%= link_to 'New User', new_user_path, class: "btn btn-primary" %>
-</div>
-
 <table class="table table-striped table-hover">
   <thead >
     <tr>
-      <th scope='col'>  </th>
       <th scope='col'>First name</th>
       <th scope='col'>Last name</th>
       <th scope='col'>Email</th>
       <th scope='col'>Position</th>
+      <th scope='col'> <%= link_to 'New User', new_user_path, class: "btn btn-primary" %></th>
     </tr>
   </thead>
+ 
+ 
+
 
   <tbody>
     <% @users.each do |user| %>
@@ -33,8 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-
-

@@ -3,7 +3,18 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if params.has_key?(:q)
+      case params[:q]
+        when 'first_name'
+          @users = User.where("first_name LIKE ? ", "%" + params[:q] + "%" )
+        when 'last_name'
+          @users = User.where("last_name LIKE ? ", "%" + params[:q] + "%" )
+        when 'email'
+          @users = User.where("email LIKE ? ", "%" + params[:q] + "%" )
+      else
+          @users = User.all
+      end
+    end
   end
 
   # GET /users/1 or /users/1.json
