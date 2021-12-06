@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Study Sesh</h1>
-<div class='big help'>
+<div class='big help d-flex justify-content-center' id='movable'>
   <div class='help card'>
       <div class="settings">
-          <button id="settings-btn" class="set-btn fas fa-cog fa-lg btn btn-primary" type="button">settings</button>
+          <button id="settings-btn" class="set-btn fas fa-cog fa-lg" type="button">settings</button>
       </div>
       <br>
       <div>
@@ -54,7 +55,56 @@
       </div>
     </div>
   </div>
- 
+  
+  <div class='frameOverlay'></div>
+      <div class='resizeable'>
+        <div id='movable2'>
+            <div class='handle'></div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen class='card'></iframe>
+        </div>
+    </div>
+    
+    
+    
+<div class="card notes" id='movable3'>
+    <div>
+      <div class='container text-center'>
+        <h2>Assignments</h2>
+        <% @courses.each do |course| %>
+            <% course.assignments.each do |assignment| %>
+                <div class='card'>
+                  <div class="row">
+                    <div class="column">
+                      <%= course.name %> <br>
+                      <%= assignment.name %>
+                    </div>
+        
+                    <div class='column'>
+                      <%= assignment.date.strftime("DUE AT: %I:%M %p") %>
+                      <br>
+                      <%= assignment.date.strftime("%b %d") %>
+                    </div>
+                    <div class='column'>
+                        <div class='btn btn-primary start ' id='mixBut' onclick="startCount()">
+                          START
+                        </div>
+                        <div class='btn btn-danger stop' id='mixBut' onclick="stopCount()">
+                          STOP
+                        </div>
+                        <p class='txt'></p>
+                    </div>
+                </div>
+                </div>
+          <% end %>
+        <% end %>
+      <br>
+      <br>
+      </div>  
+    </div>
+  </div>
     
   <%= javascript_pack_tag 'main'%>
+  <%= javascript_pack_tag 'draggable'%>
   <%= stylesheet_link_tag params[:controller] %>

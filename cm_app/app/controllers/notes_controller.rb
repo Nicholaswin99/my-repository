@@ -4,9 +4,8 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = current_user.notes
+    @notes = current_user.notes.search(params[:q])
   end
-
   # GET /notes/1 or /notes/1.json
   def show
   end
@@ -47,6 +46,12 @@ class NotesController < ApplicationController
       end
     end
   end
+  
+  def search
+    @notes = Note.search(params[:q])
+    render "index"
+  end
+  
 
   # DELETE /notes/1 or /notes/1.json
   def destroy

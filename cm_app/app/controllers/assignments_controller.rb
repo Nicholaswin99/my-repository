@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
 
   # GET courses/1/assignments
   def index
-    @assignments = @course.assignments
+    @assignments = @course.assignments.paginate(page: params[:page], per_page: 5)
   end
 
   # GET courses/1/assignments/1
@@ -45,7 +45,13 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
 
-    redirect_to course_assignments_url(@course)
+    redirect_to (@assignment.course)
+  end
+  
+  def count_time 
+    starting = Process.clock.gettime(Process::CLOCK_MONOTONIC)
+    ending = Process.clock.gettime(Process::CLOCK_MONOTONIC)
+    elapsed = ending - starting
   end
 
   private
@@ -60,6 +66,6 @@ class AssignmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def assignment_params
-      params.require(:assignment).permit(:name, :description, :status, :date, :course_id)
+      params.require(:assignment).permit(:name, :description, :status, :date, :complete_time, :course_id)
     end
 end

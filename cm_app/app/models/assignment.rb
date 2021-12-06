@@ -8,4 +8,7 @@ class Assignment < ApplicationRecord
     ['In Progress','in-progress'],
     ['Complete','complete']
   ]
+  
+
+  
 end
