@@ -9,6 +9,14 @@ class Assignment < ApplicationRecord
     ['Complete','complete']
   ]
   
-
+   class << self
+    def search(query)
+      rel = order("id")
+      if query.present?
+        rel = rel.where("name LIKE?", "%#{query}%")
+      end
+      rel
+    end
+  end
   
 end

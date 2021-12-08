@@ -9,7 +9,7 @@
 
   <div class='card'>
     <h4 class='text-center'>How do you spend your time</h4>
-    <%= pie_chart Assignment.group(:complete_time).count %>
+    <%= pie_chart Note.group(:created_at).count %>
   </div>
 
   <br>
